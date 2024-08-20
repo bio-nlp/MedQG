@@ -1,0 +1,79 @@
+{"clinical_note":"An 84-year-old female with a past medical history of hypertension presented with weakness, dry cough, and shortness of breath for four days. The patient had received two doses of the COVID vaccine, with the second dose in March 2021. In the ER, her vital signs were BP 133/93, HR 103 bpm, RR 22 breaths/min, oxygen saturation of 96% on 40 L per minute of supplemental oxygen via high-flow nasal cannula, and afebrile. Laboratory assessment is in Table. Nasopharyngeal swab for SARS-CoV-2 RNA was positive. Chest X-ray on admission shows worsening right pleural effusion with new opacity obscuring the lower two-third of the right lung and a new pleural-based opacity in the left upper lobe Figure. CT chest with contrast shows large right pleural effusion and associated right basilar consolidation and abdominal ascites. The patient was admitted to the telemetry unit and started on methylprednisolone, piperacillin-tazobactam, remdesivir, and baricitinib. The patient clinically deteriorated on Day 2 and was transferred to the intensive care unit for thoracentesis and possible intubation. Thoracentesis removed 1.95 L of bloody, serosanguineous fluid obtained, with partial resolution of the effusion Figure. On Day 3, the patient developed septic shock, florid renal failure, and lethargy and was started on intravenous fluids and norepinephrine drip. Chest X-ray showed near-complete opacification of bilateral lung fields and subsequently was intubated. On Day 4, tense ascites were noted and the patient underwent paracentesis, which removed 4.25 L of bloody, serosanguinous fluid. Renal replacement therapy started. The patient was deemed to have a guarded prognosis with multiorgan failure.",
+"topic":"Management - Clinical Interventions/Treatments - current/short-term management",
+"keypoint":"sepsis",
+"content_to_feedback":[{
+"context":"An 84-year-old female with a past medical history of hypertension presented with weakness, dry cough, and shortness of breath for four days. The patient had received two doses of the COVID vaccine, with the second dose in March 2021. In the ER, her vital signs were BP 133/93, HR 103 bpm, RR 22 breaths/min, oxygen saturation of 96% on 40 L per minute of supplemental oxygen via high-flow nasal cannula, and afebrile. Laboratory assessment is in Table. Nasopharyngeal swab for SARS-CoV-2 RNA was positive. Chest X-ray on admission shows worsening right pleural effusion with new opacity obscuring the lower two-third of the right lung and a new pleural-based opacity in the left upper lobe Figure. CT chest with contrast shows large right pleural effusion and associated right basilar consolidation and abdominal ascites. The patient was admitted to the telemetry unit and started on methylprednisolone, piperacillin-tazobactam, remdesivir, and baricitinib. The patient clinically deteriorated on Day 2 and was transferred to the intensive care unit for thoracentesis and possible intubation. Thoracentesis removed 1.95 L of bloody, serosanguineous fluid obtained, with partial resolution of the effusion Figure. On Day 3, the patient developed septic shock, florid renal failure, and lethargy and was started on intravenous fluids and norepinephrine drip. Chest X-ray showed near-complete opacification of bilateral lung fields and subsequently was intubated. On Day 4, tense ascites were noted and the patient underwent paracentesis, which removed 4.25 L of bloody, serosanguinous fluid. Renal replacement therapy started. The patient was deemed to have a guarded prognosis with multiorgan failure.",
+"question": "What is the key clinical condition seen in this patient?",
+"correct_answer" : "Sepsis",
+"distractor_options":"a) Acute respiratory distress syndrome (ARDS) b) Myocardial infarction (MI) c) Pulmonary embolism (PE) d) Pneumonia",
+"context_feedback": {
+      "relevance": "The context is somewhat relevant to the topic but it lacks specificity and is too broad. It should focus more on relevant details. Score: 2/5.",
+      "concision": "The context is too lengthy and an exact copy of the clinical note, which hampers clarity. It should be concise and to the point. Score: 1/5.",
+      "coherent": "The context is coherent in itself, but it doesn't smoothly lead up to the question. It could be better connected to the question. Score: 3/5.",
+      "consistent": "The context is consistent with the information in the clinical note and the topic, which is good. Score: 4/5.",
+      "specific": "The context contains unnecessary information and is not specific enough to the topic. It should focus on relevant details. Score: 2/5.",
+      "fluent": "The context is well-written in terms of grammar and flow of ideas. Score: 4/5.",
+      "clueing": "The context directly mentions medical conditions like septic shock, which should have been hinted at through symptoms. Score: 2/5.",
+      "occurrence": "The correct answer, sepsis, is too evident in the context with the mention of septic shock, making the question too easy. Score: 1/5."
+    }
+  ,
+  "context_score":"19/40",
+    "question_feedback": {
+      "relevance": "The question is answerable from the context, which is good. Score: 4/5.",
+      "clear": "The question is clear, which is essential for a well-formed question. Score: 4/5.",
+      "concluding": "The flow of ideas from the context to the question could be more organic and seamless. Score: 3/5.",
+      "difficulty": "The question is too easy as the correct answer is explicitly mentioned in the context. Score: 1/5."
+    }
+  ,
+  "question_score":"12/20",
+    "correct_answer_feedback": {
+      "relevance": "The correct answer is the keypoint, which is appropriate. Score: 5/5.",
+      "occurrence": "The correct answer, sepsis, is too evident in the context with the mention of septic shock, making the question too easy. Score: 1/5."
+    }
+  ,
+  "correct_answer_score":"6/10",
+    "distractor_option_feedback": {
+      "format": "The distractors have issues with different lengths and inconsistent abbreviation usage. They should be more standardized. Score: 2/5.",
+      "length": "the distractors don’t have similar length as the correct answer. 2/5.",
+      "relation": "The distractors being related to the correct answer is good for the question's quality. Score: 4/5."
+    },
+    "distractor_option_score":"9/15"
+},
+{"context":
+"The 84-year-old female patient presented to the emergency room with weakness, dry cough, and shortness of breath. She had a past medical history of hypertension and had received two doses of the COVID vaccine. On examination, her vital signs were relatively stable, but laboratory assessment revealed positive SARS-CoV-2 RNA. Chest imaging showed worsening right pleural effusion and new opacities in the lungs. The patient was admitted to the telemetry unit and started on several medications. However, her condition deteriorated, and she was transferred to the intensive care unit for further management.",
+"question" : "What is the most likely complication that has developed in this patient's case?",
+"correct_answer":"Septic shock",
+"distractor_options":"a) Acute respiratory distress syndrome b) Pulmonary embolism c) Cardiogenic shock d) Bacterial Pneumonia",
+"context_feedback": {
+      "relevance": "The context is relevant to the topic. Score: 5/5.",
+      "concision": "The context is short and focused. Score: 5/5.",
+      "coherent": "The context is coherent in itself and leads to the question. Score: 4/5.",
+      "consistent": "The context is consistent with the information in the clinical note and the topic. Score: 5/5.",
+      "specific": "The context is  specific to the topic and has less unwanted information. Score: 4/5.",
+      "fluent": "The context is fluent in terms of grammar and flow of words and ideas. Score: 5/5.",
+      "clueing": "The correct answer is not directly mentioned and clued in through different observations. Score: 4/5.",
+      "occurrence": "The correct answer, sepsis does not occur in the context in any form. Score: 5/5."
+    }
+  ,
+  "context_score":"37/40",
+  
+  "question_feedback":{
+      "relevance": "The question is answerable from the information provided in the context. Score: 4/5.",
+      "clear": "The question is clear. Score: 5/5.",
+      "concluding": "the flow of ideas from the context organically results in the question. Score: 4/5.",
+      "difficulty": "The question is not that easy and straightforward and requires medical acumen. Score: 4/5."
+    },
+    "question_score":"17/20",
+    "correct_answer_feedback": { "relevance": "The correct answer is the keypoint. Score: 5/5.",
+      "occurrence": "The correct answer, sepsis does not occur in the context in any form. Score: 5/5."
+    }
+  ,
+  "correct_answer_score":"10/10",
+    "distractor_option_feedback": {
+      "format": "The distractors and correct answer have the same format. Score: 5/5.",
+      "length": "Three out of four distractors and the correct answer have the similar length. Score: 4/5.",
+      "relation": "The distractors and the correct are all medical conditions affecting the lungs so they are related. Score: 4/5."
+    },
+    "distractor_option_score":"13/15"
+}]
+}

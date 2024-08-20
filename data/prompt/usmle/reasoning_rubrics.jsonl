@@ -1,0 +1,26 @@
+{
+  "context_score_rubrics": {
+    "completeness": "The context should be complete and free from gaps or missing information that could lead to ambiguity in answering the question accurately.",
+    "misdirection": "Does the context avoid misleading the test taker intentionally or unintentionally?"
+  },
+  "reasoning_score_rubrics": {
+    "correctness" : "If the attempted answer is exactly same as the correct answer, give full points otherwise zero.",
+    "logical_flow": "Does the chain of thought exhibit a coherent sequence of steps or considerations that are easy to follow?",
+    "evidence_based_reasoning": "Is the answer supported by evidence or information from the context, justifying the chosen response?",
+    "consideration_of_options": "Does the chain of thought demonstrate critical evaluation of each option, employing a systematic process to eliminate distractors with supporting evidence?"
+  },
+  "question_score_rubrics": {
+    "clarity": "Is the question clear and unambiguous to avoid incorrect interpretations caused by ambiguity or poor wording?"
+  },
+  "correct_answer_score_rubrics": {
+    "justification": "Is the correct answer logically supported by the context and aligned with the provided information?",
+    "depth_of_understanding": "Does the correct answer demand nuanced understanding of the context or concepts, ensuring the test taker genuinely grasps the material?",
+    "prevention_of_guesswork": "Does the correct answer deter guessing and align with the context, avoiding common misconceptions?"
+  },
+  "distractor_options_score_rubrics": {
+    "variation": "Distractors should be distinct from each other and from the correct answer.",
+    "plausibility": "Do the options align with the context and challenge critical thinking?",
+    "differentiation": "Are the options distinct and does the correct answer clearly outshine the distractors based on context and available information?",
+    "common_mistakes": "Distractors should align with common misconceptions to test genuine understanding?"
+  }
+}
