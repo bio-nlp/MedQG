@@ -7,7 +7,7 @@
 import openai
 import json
 import pandas as pd
-openai.api_key = "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"
+openai.api_key = ""
 
 
 
