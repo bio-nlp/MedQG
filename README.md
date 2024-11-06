@@ -7,7 +7,7 @@ This repository contains the source code for our paper on generating USMLE-style
 - **Distractors** (incorrect answer options)
 
 The approach combines iterative feedback and refinement, aimed at aligning with clinical education standards. The full research paper, detailing the methodology and findings, is available [here on arXiv](https://arxiv.org/abs/2410.13191).
-
+![MCQG-SRefine flow chart](usmle_flowchart.png)
 The code is compatible with **GPT-3.5** and **GPT-4** chat completion APIs from OpenAI and employs a retriever model to enhance context-specificity. 
 
 ## Quick Start
