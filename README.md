@@ -1,6 +1,3 @@
-Here’s the updated README with information on setting the `COLBERT_API` environment variable:
-
-```markdown
 # USMLE-Style Question Generation Conditional on Clinical Notes
 
 This repository contains the source code for generating USMLE-style multiple-choice questions from clinical notes, using **topics** and **test points** as key components. The generated questions follow the USMLE format, including the following elements:
