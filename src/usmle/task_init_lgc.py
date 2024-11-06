@@ -28,6 +28,7 @@ load_dotenv(dotenv_path='usmle.env')
 
 OPENAIKEY = os.getenv("OPENAIKEY")
 OPENAIORG = ''
+COLBERT_API = os.getenv("COLBERT_API")
 
 class UsmleQgenTaskInitLgc(Prompt):
     def __init__(self, prompt_examples: str, engine: str) -> None:
@@ -41,7 +42,7 @@ class UsmleQgenTaskInitLgc(Prompt):
     def retrieve_sim_questions_colbert(self,content,k:int):
         print(OPENAIKEY)
         p = {'query':content, 'k':k }
-        r = requests.get( 'https://bio-nlp.org/colbertmimic/api/search',params=p)
+        r = requests.get( COLBERT_API,params=p)
         res_json = r.json()
         print(res_json)
         qbank_df = pd.read_csv('data/inputs/USMLE_qbank_whlqtn.csv')

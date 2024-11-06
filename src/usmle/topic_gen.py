@@ -5,7 +5,6 @@ from tqdm import tqdm
 from typing import List
 from src.utils import retry_parse_fail_prone_cmd
 import ast
-from src.usmle.feedback_lgc import UsmleQgenFeedbackLgc
 from src.usmle.gen_order import gen_order
 
 from langchain import PromptTemplate,FewShotPromptTemplate
@@ -13,7 +12,6 @@ from langchain.output_parsers import PydanticOutputParser
 from langchain.llms import OpenAI
 from langchain.chat_models import ChatOpenAI
 from langchain.chains import LLMChain,SequentialChain
-from src.usmle.task_init_lgc import UsmleQgenTaskInitLgc
 CODEX = "code-davinci-002"
 GPT3 = "text-davinci-003"
 CHATGPT = "gpt-3.5-turbo"

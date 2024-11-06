@@ -4,9 +4,9 @@ import random
 from tqdm import tqdm
 from typing import List
 import re
-from src.usmle.task_init import UsmleQgenTaskInit
+from usmle.archive.task_init import UsmleQgenTaskInit
 from src.usmle.task_iterate import UsmleQgenTaskIterate
-from src.usmle.feedback import UsmleQgenFeedback
+from usmle.archive.feedback import UsmleQgenFeedback
 from src.usmle.answer import UsmleQgenAnswer
 from src.utils import retry_parse_fail_prone_cmd
 import ast

@@ -5,9 +5,9 @@ from tqdm import tqdm
 from typing import List
 import re
 import requests
-from src.usmle.task_init import UsmleQgenTaskInit
+from usmle.archive.task_init import UsmleQgenTaskInit
 from src.usmle.task_iterate import UsmleQgenTaskIterate
-from src.usmle.feedback import UsmleQgenFeedback
+from usmle.archive.feedback import UsmleQgenFeedback
 from src.usmle.answer import UsmleQgenAnswer
 from src.utils import retry_parse_fail_prone_cmd
 import ast
@@ -26,6 +26,7 @@ load_dotenv(dotenv_path='usmle.env')
 
 OPENAIKEY = os.getenv("OPENAIKEY")
 OPENAIORG = os.getenv("OPENAIORG")
+COLBERT_API = os.getenv("COLBERT_API")
 
 CODEX = "code-davinci-002"
 GPT3 = "text-davinci-003"
@@ -35,7 +36,7 @@ ENGINE = "gpt-4"
 @retry_parse_fail_prone_cmd
 def retrieve_sim_keypoints_colbert(content,k:int):
         p = {'query':content, 'k':k }
-        r = requests.get( 'https://bio-nlp.org/colbertmimic/api/search',params=p)
+        r = requests.get( COLBERT_API,params=p)
         res_json = r.json()
         # print(res_json)
         qbank_topk = res_json['topk'][0]
