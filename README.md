@@ -1,13 +1,12 @@
-# USMLE-Style Question Generation Conditional on Clinical Notes
-
-This repository contains the source code for generating USMLE-style multiple-choice questions from clinical notes, using **topics** and **test points** as key components. The generated questions follow the USMLE format, including the following elements:
+# MCQG-SRefine: Multiple Choice Question Generation and Evaluation with Iterative Self-Critique, Correction, and Comparison Feedback
+This repository contains the source code for our paper on generating USMLE-style multiple-choice questions from clinical notes, leveraging **topics** and **test points** as key components to create high-quality exam questions tailored to medical training. The model integrates contextual understanding and medical relevance to generate questions with essential USMLE-style elements, including:
 
 - **Context**
 - **Question**
 - **Correct Answer**
 - **Distractors** (incorrect answer options)
-- **Test Points** (key takeaways or objectives of the question)
-- **Topics** (specific medical areas or themes)
+
+The approach combines iterative feedback and refinement, aimed at aligning with clinical education standards. The full research paper, detailing the methodology and findings, is available [here on arXiv](https://arxiv.org/abs/2410.13191).
 
 The code is compatible with **GPT-3.5** and **GPT-4** chat completion APIs from OpenAI and employs a retriever model to enhance context-specificity. 
 
@@ -76,27 +75,6 @@ python3 src/usmle/run.py batch-iter <data_path>
 
 - `<data_path>`: Path to a JSON file containing clinical notes, topics, and test points.
 
-## Detailed Usage
-
-Each component in the generation pipeline is powered by iterative feedback and refinement using **GPT-4**. Specify the initial prompt and exemplar set, and the model will generate and refine questions based on the input clinical data.
-
-- **Input JSON Format**  
-  Each record in the input file `<data_path>` should follow this structure:
-
-  ```json
-  {
-    "clinical_note": "Clinical note text here.",
-    "topic": "Topic description",
-    "test_point": "Key objectives"
-  }
-  ```
-
-  - `clinical_note`: The main text of the clinical note.
-  - `topic`: Medical topic for question alignment.
-  - `test_point`: The question's intended test objective.
-
-- **Generated Output**
-  - Contextualized USMLE-style question components will be saved to the specified output directory.
 
 ## Customization and Updates
 
@@ -105,14 +83,3 @@ To use different models, specify the desired GPT model version in the `.env` fil
 - **Model API Key**: Update the `OPENAI_API_KEY` in `usmle.env`.
 - **ColBERT API Endpoint**: Update the `COLBERT_API` variable in `usmle.env` with the ColBERT API endpoint URL.
 - **Few-shot Examples**: Add or modify few-shot examples in `./data/prompt/usmle/` for different components.
-
-## Example Outputs
-
-*Examples of generated question formats can be added here, demonstrating the typical structure and variety produced by the pipeline.*
-
----
-
-Feel free to add further details, such as contact information, license terms, or links to relevant research papers. This format should make the README easier to navigate and understand!
-```
-
-This README now includes instructions for setting up the `COLBERT_API` environment variable. Let me know if you'd like any further modifications.
