@@ -22,6 +22,11 @@ Ensure that you have a GPT-3 or GPT-4 API key from OpenAI. The API key should be
   ```bash
   echo "OPENAI_API_KEY=<Your_OpenAI_API_Key>" > usmle.env
   ```
+- Specify the OpenAI model you want to use in the `.env` file:
+
+  ```bash
+  echo "ENGINE=<Your_model_name>" > usmle.env
+  ```
 
 - Set up the **ColBERT API** endpoint by adding it as another environment variable in the `.env` file. This is required for retrieving similar exemplars to improve context relevance.
 
@@ -29,11 +34,6 @@ Ensure that you have a GPT-3 or GPT-4 API key from OpenAI. The API key should be
   echo "COLBERT_API=<Your_ColBERT_API_Endpoint>" >> usmle.env
   ```
 
-- Ensure all dependencies are installed:
-
-  ```bash
-  pip install -r requirements.txt
-  ```
 
 ### 2. **Retrieval Model Setup**
 
