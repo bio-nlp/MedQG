@@ -1,4 +1,5 @@
 import json
+import os
 import pathlib
 import random
 from tqdm import tqdm
@@ -17,7 +18,7 @@ from src.usmle.task_init_lgc import UsmleQgenTaskInitLgc
 CODEX = "code-davinci-002"
 GPT3 = "text-davinci-003"
 CHATGPT = "gpt-3.5-turbo"
-ENGINE = "gpt-4"
+ENGINE = os.getenv("ENGINE")
 
 @retry_parse_fail_prone_cmd
 def autofb_usmleqgen(clinical_note: str, keypoint: str, topic: str, max_attempts: int) -> str:

@@ -82,4 +82,6 @@ To use different models, specify the desired GPT model version in the `.env` fil
 
 - **Model API Key**: Update the `OPENAI_API_KEY` in `usmle.env`.
 - **ColBERT API Endpoint**: Update the `COLBERT_API` variable in `usmle.env` with the ColBERT API endpoint URL.
+- **Chat Engine name**: Update the `ENGINE` variable in `usmle.env` for using a different GPT model.
+
 - **Few-shot Examples**: Add or modify few-shot examples in `./data/prompt/usmle/` for different components.
