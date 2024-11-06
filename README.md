@@ -39,7 +39,7 @@ Ensure that you have a GPT-3 or GPT-4 API key from OpenAI. The API key should be
 
 To retrieve similar exemplars, we use **ColBERT** (Colbert Late Interaction over BERT). This repository assumes access to a **ColBERT API endpoint** (set up internally). ColBERT helps identify the closest clinical note exemplars to enhance question relevance. Ensure that the **ColBERT API path** is updated in the `COLBERT_API` environment variable.
 
-- **ColBERT Model API:** [ColBERT GitHub Repository](https://github.com/stanford-futuredata/ColBERT)
+- **ColBERT Model used:** [ColBERT GitHub Repository](https://github.com/stanford-futuredata/ColBERT)
 
 ## Components
 
@@ -51,7 +51,7 @@ Generate topics relevant to a clinical note.
 python3 src/usmle/topic_gen.py batch-iter <path_to_clinical_notes> ./data/prompt/usmle/topic_fewshot.jsonl
 ```
 
-- `<path_to_clinical_notes>`: Path to the file containing clinical notes.
+- `<path_to_clinical_notes>`: Path to the json file containing clinical notes.
 - `./data/prompt/usmle/topic_fewshot.jsonl`: A JSONL file containing few-shot examples.
 
 ### 2. **Test Point Generation**
@@ -62,7 +62,7 @@ Generate key test points from a clinical note.
 python3 src/usmle/keypoint_gen.py batch-iter <path_to_clinical_notes> ./data/prompt/usmle/keypoint_fewshot.jsonl
 ```
 
-- `<path_to_clinical_notes>`: Path to the file containing clinical notes.
+- `<path_to_clinical_notes>`: Path to the json file containing clinical notes.
 - `./data/prompt/usmle/keypoint_fewshot.jsonl`: A JSONL file containing few-shot examples.
 
 ### 3. **USMLE Question Generation**
@@ -74,7 +74,7 @@ python3 src/usmle/run.py batch-iter <data_path>
 ```
 
 - `<data_path>`: Path to a JSON file containing clinical notes, topics, and test points.
-
+- For example the file `data/inputs/human_cn_t_kp_1-35.jsonl` can be used
 
 ## Customization and Updates
 
