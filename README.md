@@ -2,7 +2,7 @@
 
 ![MCQG-SRefine flow chart](usmle_flowchart.png)
 
-This repository contains the source code for our paper on generating USMLE-style multiple-choice questions from clinical notes, leveraging **topics** and **test points** as key components to create high-quality exam questions tailored to medical training. The model integrates contextual understanding and medical relevance to generate questions with essential USMLE-style elements, including:
+This repository contains the source code for our paper to be presented at NAACL 2025, focusing on generating USMLE-style multiple-choice questions from clinical notes, leveraging **topics** and **test points** as key components to create high-quality exam questions tailored to medical training. The model integrates contextual understanding and medical relevance to generate questions with essential USMLE-style elements, including:
 
 - **Context**
 - **Question**
@@ -43,7 +43,7 @@ To retrieve similar exemplars, we use **ColBERT** (Colbert Late Interaction over
 
 - **ColBERT Model used:** [ColBERT GitHub Repository](https://github.com/stanford-futuredata/ColBERT)
 
-As an alternative to COLBERT, we use the instructor-large model (https://huggingface.co/hkunlp/instructor-large) for retrieval of closest USMLE question exemplars. The code (specifically the ) currently runs on this, given the embeddings of the questions in USMLE question bank have been pre-generated.
+As an alternative to COLBERT, we use the instructor-large model (https://huggingface.co/hkunlp/instructor-large) for retrieval of closest USMLE question exemplars. The code (specifically the INIT question generation step) currently runs on this, given the embeddings of the questions in USMLE question bank have been pre-generated.
 ## Components
 
 ### 1. **Topic Generation**
