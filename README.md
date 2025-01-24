@@ -1,5 +1,5 @@
 # MCQG-SRefine: Multiple Choice Question Generation and Evaluation with Iterative Self-Critique, Correction, and Comparison Feedback
-This repository contains the source code for our paper on generating USMLE-style multiple-choice questions from clinical notes, leveraging **topics** and **test points** as key components to create high-quality exam questions tailored to medical training. The model integrates contextual understanding and medical relevance to generate questions with essential USMLE-style elements, including:
+This repository contains the source code for our paper to be presented at the NAACL 2025 main conference, focusing on generating USMLE-style multiple-choice questions from clinical notes, leveraging **topics** and **test points** as key components to create high-quality exam questions tailored to medical training. The model integrates contextual understanding and medical relevance to generate questions with essential USMLE-style elements, including:
 
 - **Context**
 - **Question**
@@ -23,12 +23,6 @@ Ensure that you have a GPT-3 or GPT-4 API key from OpenAI. The API key should be
   echo "OPENAI_API_KEY=<Your_OpenAI_API_Key>" > usmle.env
   ```
 
-- Set up the **ColBERT API** endpoint by adding it as another environment variable in the `.env` file. This is required for retrieving similar exemplars to improve context relevance.
-
-  ```bash
-  echo "COLBERT_API=<Your_ColBERT_API_Endpoint>" >> usmle.env
-  ```
-
 - Ensure all dependencies are installed:
 
   ```bash
@@ -37,10 +31,11 @@ Ensure that you have a GPT-3 or GPT-4 API key from OpenAI. The API key should be
 
 ### 2. **Retrieval Model Setup**
 
-To retrieve similar exemplars, we use **ColBERT** (Colbert Late Interaction over BERT). This repository assumes access to a **ColBERT API endpoint** (set up internally). ColBERT helps identify the closest clinical note exemplars to enhance question relevance. Ensure that the **ColBERT API path** is updated in the `COLBERT_API` environment variable.
+To retrieve similar exemplars, we use **ColBERT** (Colbert Late Interaction over BERT). This repository assumes access to a **ColBERT API endpoint** (set up internally). ColBERT helps identify the closest USMLE question exemplars to enhance generated question relevance. Ensure that the **ColBERT API path** is updated in the `COLBERT_API` environment variable.
 
 - **ColBERT Model API:** [ColBERT GitHub Repository](https://github.com/stanford-futuredata/ColBERT)
 
+As an alternative to COLBERT, we use the instructor-large model (https://huggingface.co/hkunlp/instructor-large) for retrieval of closest USMLE question exemplars. The code (specifically the ) currently runs on this, given the embeddings of the questions in USMLE question bank have been pre-generated.
 ## Components
 
 ### 1. **Topic Generation**
@@ -85,3 +80,7 @@ To use different models, specify the desired GPT model version in the `.env` fil
 - **Chat Engine name**: Update the `ENGINE` variable in `usmle.env` for using a different GPT model.
 
 - **Few-shot Examples**: Add or modify few-shot examples in `./data/prompt/usmle/` for different components.
+
+## Generated Data
+
+The generated USMLE questions (both GPT-4 and MCQG-SRefine) and their GPT-4 LLM-as-judge comparison preferences (for both kinds of question ordering) can be found in `./data/gpt4_eval_data`

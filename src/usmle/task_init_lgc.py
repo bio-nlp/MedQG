@@ -62,7 +62,9 @@ class UsmleQgenTaskInitLgc(Prompt):
         
     def retrieve_sim_questions(self,content,instruction, k:int):
         model = INSTRUCTOR('hkunlp/instructor-large')
+        instruction = "Represent the following clinical note for clustering, for retrieving USMLE questions related to the topic '{topic}': "
         embedding = model.encode([[instruction,content]])
+        # INSTRUCTOR('hkunlp/instructor-large') generated embeddings for the questions in data/inputs/USMLE_qbank_whlqtn.csv
         inputs_file_path = "data/US/US_qbank_embed.csv"
         qbank_df = pd.read_csv(inputs_file_path)
         qbank_df['embedding'] = qbank_df.apply(lambda x: self.get_embed_array(x),axis=1)
@@ -82,8 +84,7 @@ class UsmleQgenTaskInitLgc(Prompt):
     def generate_step_by_step(self,clinical_note: str,keypoint:str,topic:str) -> str:
         llm = ChatOpenAI(model=self.engine, temperature=0.7,openai_api_key=OPENAIKEY)
         ## Retrieving USMLE questions similar to the clinical note and topic from the qbank
-        cn_sim_instruction = "Represent the following clinical note for clustering, for retrieving USMLE questions related to the topic '{topic}': "
-        cn_sim_examples = self.retrieve_sim_questions_colbert(clinical_note, 3)
+        cn_sim_examples = self.retrieve_sim_questions(clinical_note, 3)
         print(cn_sim_examples)
         cn_sim_ex_prompt = PromptTemplate(
             suffix = "USMLE context based questions: \n",
@@ -102,7 +103,7 @@ class UsmleQgenTaskInitLgc(Prompt):
         print(context_output)
         context = context_output.split('Context:')[1].strip()
         context_sim_instruction = "Represent the following context for clustering, for retrieving USMLE questions related to the topic '{topic}': "
-        context_sim_examples = self.retrieve_sim_questions_colbert(context,  3)
+        context_sim_examples = self.retrieve_sim_questions(context,  3)
         print(context_sim_examples)
         context_sim_ex_prompt = PromptTemplate(
             suffix = "USMLE context based questions: \n",
@@ -123,7 +124,7 @@ class UsmleQgenTaskInitLgc(Prompt):
         question = question_output.split('Question:')[1].strip()
         context_question = context+question
         cq_sim_instruction =  "Represent the following context and question for clustering, for retrieving USMLE questions related to the topic '{topic}': "
-        cq_sim_examples = self.retrieve_sim_questions_colbert(context_question,  3)
+        cq_sim_examples = self.retrieve_sim_questions(context_question,  3)
         print(cq_sim_examples)
         cq_sim_ex_prompt = PromptTemplate(
             suffix = "USMLE context based questions with their correct answers: \n",
@@ -146,7 +147,7 @@ class UsmleQgenTaskInitLgc(Prompt):
         correct_answer = ca_output.split('Correct answer:')[1].strip()
         qa_templ = "Question: {context_question}\nCorrect answer: {correct_answer}" 
         distr_instruction = "Represent the following context based question and its answer for clustering, for retrieving USMLE questions related to the topic '{topic}':"
-        distr_sim_examples = self.retrieve_sim_questions_colbert(qa_templ.format(context_question=context_question,correct_answer=correct_answer),  3)
+        distr_sim_examples = self.retrieve_sim_questions(qa_templ.format(context_question=context_question,correct_answer=correct_answer),  3)
         distr_sim_ex_prompt = PromptTemplate(
             suffix = "USMLE context based questions with their correct answers and distractor options: \n",
             input_variables=["question", "correct_answer","distractor_options"], 
@@ -169,7 +170,7 @@ class UsmleQgenTaskInitLgc(Prompt):
         return context,question,correct_answer,distractor_options
     def generate_whole_qtn(self, clinical_note: str,keypoint:str,topic:str) -> str:
         llm = ChatOpenAI(model=self.engine, temperature=0.7,openai_api_key=OPENAIKEY,openai_organization=OPENAIORG)
-        sim_examples = self.retrieve_sim_questions_colbert(clinical_note,  3)
+        sim_examples = self.retrieve_sim_questions(clinical_note,  3)
         print(sim_examples)
         sim_ex_prompt = PromptTemplate(
             suffix = "USMLE context based questions with their correct answers and options: \n",
@@ -195,7 +196,7 @@ class UsmleQgenTaskInitLgc(Prompt):
     def generate_distractor_last(self, clinical_note: str,keypoint:str,topic:str) -> str:
         llm = ChatOpenAI(model=self.engine, temperature=0.7,openai_api_key=OPENAIKEY,openai_organization=OPENAIORG)
         qa_sim_instruction = "Represent the following clinical note for clustering, for retrieving USMLE questions related to the topic '{topic}': "
-        qa_sim_examples = self.retrieve_sim_questions_colbert(clinical_note,  3)
+        qa_sim_examples = self.retrieve_sim_questions(clinical_note,  3)
         qa_sim_ex_prompt = PromptTemplate(
             suffix = "USMLE context based questions with their correct answers: \n",
             input_variables=["question", "correct_answer"], 
@@ -219,7 +220,7 @@ class UsmleQgenTaskInitLgc(Prompt):
         print(qa_output.keys())
         context,question,correct_answer = qa_output["context"],qa_output["question"],qa_output["correct_answer"]
         distr_instruction = "Generate distractor options for the following context, question and correct answers."
-        distr_sim_examples = self.retrieve_sim_questions_colbert(str(qa_output)[1:-1], 3)
+        distr_sim_examples = self.retrieve_sim_questions(str(qa_output)[1:-1], 3)
         distr_sim_ex_prompt = PromptTemplate(
             suffix = "USMLE context based questions with their correct answers and distractor options: \n",
             input_variables=["question", "correct_answer","distractor_options"], 
