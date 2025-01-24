@@ -1,5 +1,8 @@
 # MCQG-SRefine: Multiple Choice Question Generation and Evaluation with Iterative Self-Critique, Correction, and Comparison Feedback
-This repository contains the source code for our paper to be presented at the NAACL 2025 main conference, focusing on generating USMLE-style multiple-choice questions from clinical notes, leveraging **topics** and **test points** as key components to create high-quality exam questions tailored to medical training. The model integrates contextual understanding and medical relevance to generate questions with essential USMLE-style elements, including:
+
+![MCQG-SRefine flow chart](usmle_flowchart.png)
+
+This repository contains the source code for our paper on generating USMLE-style multiple-choice questions from clinical notes, leveraging **topics** and **test points** as key components to create high-quality exam questions tailored to medical training. The model integrates contextual understanding and medical relevance to generate questions with essential USMLE-style elements, including:
 
 - **Context**
 - **Question**
@@ -22,6 +25,11 @@ Ensure that you have a GPT-3 or GPT-4 API key from OpenAI. The API key should be
   ```bash
   echo "OPENAI_API_KEY=<Your_OpenAI_API_Key>" > usmle.env
   ```
+- Specify the OpenAI model you want to use in the `.env` file:
+
+  ```bash
+  echo "ENGINE=<Your_model_name>" > usmle.env
+  ```
 
 - Ensure all dependencies are installed:
 
@@ -33,7 +41,7 @@ Ensure that you have a GPT-3 or GPT-4 API key from OpenAI. The API key should be
 
 To retrieve similar exemplars, we use **ColBERT** (Colbert Late Interaction over BERT). This repository assumes access to a **ColBERT API endpoint** (set up internally). ColBERT helps identify the closest USMLE question exemplars to enhance generated question relevance. Ensure that the **ColBERT API path** is updated in the `COLBERT_API` environment variable.
 
-- **ColBERT Model API:** [ColBERT GitHub Repository](https://github.com/stanford-futuredata/ColBERT)
+- **ColBERT Model used:** [ColBERT GitHub Repository](https://github.com/stanford-futuredata/ColBERT)
 
 As an alternative to COLBERT, we use the instructor-large model (https://huggingface.co/hkunlp/instructor-large) for retrieval of closest USMLE question exemplars. The code (specifically the ) currently runs on this, given the embeddings of the questions in USMLE question bank have been pre-generated.
 ## Components
@@ -46,7 +54,7 @@ Generate topics relevant to a clinical note.
 python3 src/usmle/topic_gen.py batch-iter <path_to_clinical_notes> ./data/prompt/usmle/topic_fewshot.jsonl
 ```
 
-- `<path_to_clinical_notes>`: Path to the file containing clinical notes.
+- `<path_to_clinical_notes>`: Path to the json file containing clinical notes.
 - `./data/prompt/usmle/topic_fewshot.jsonl`: A JSONL file containing few-shot examples.
 
 ### 2. **Test Point Generation**
@@ -57,7 +65,7 @@ Generate key test points from a clinical note.
 python3 src/usmle/keypoint_gen.py batch-iter <path_to_clinical_notes> ./data/prompt/usmle/keypoint_fewshot.jsonl
 ```
 
-- `<path_to_clinical_notes>`: Path to the file containing clinical notes.
+- `<path_to_clinical_notes>`: Path to the json file containing clinical notes.
 - `./data/prompt/usmle/keypoint_fewshot.jsonl`: A JSONL file containing few-shot examples.
 
 ### 3. **USMLE Question Generation**
@@ -69,7 +77,7 @@ python3 src/usmle/run.py batch-iter <data_path>
 ```
 
 - `<data_path>`: Path to a JSON file containing clinical notes, topics, and test points.
-
+- For example the file `data/inputs/human_cn_t_kp_1-35.jsonl` can be used
 
 ## Customization and Updates
 
