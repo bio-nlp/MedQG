@@ -64,7 +64,7 @@ class UsmleQgenTaskInitLgc(Prompt):
         model = INSTRUCTOR('hkunlp/instructor-large')
         instruction = "Represent the following clinical note for clustering, for retrieving USMLE questions related to the topic '{topic}': "
         embedding = model.encode([[instruction,content]])
-        # INSTRUCTOR('hkunlp/instructor-large') generated embeddings for the questions in data/inputs/USMLE_qbank_whlqtn.csv
+        # INSTRUCTOR('hkunlp/instructor-large') pre-generated embeddings for the questions in data/inputs/USMLE_qbank_whlqtn.csv
         inputs_file_path = "data/US/US_qbank_embed.csv"
         qbank_df = pd.read_csv(inputs_file_path)
         qbank_df['embedding'] = qbank_df.apply(lambda x: self.get_embed_array(x),axis=1)

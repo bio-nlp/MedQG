@@ -43,7 +43,7 @@ To retrieve similar exemplars, we use **ColBERT** (Colbert Late Interaction over
 
 - **ColBERT Model used:** [ColBERT GitHub Repository](https://github.com/stanford-futuredata/ColBERT)
 
-As an alternative to COLBERT, we use the instructor-large model (https://huggingface.co/hkunlp/instructor-large) for retrieval of closest USMLE question exemplars. The code (specifically the INIT question generation step) currently runs on this, given the embeddings of the questions in USMLE question bank have been pre-generated.
+As an alternative to COLBERT, we use the instructor-large model (https://huggingface.co/hkunlp/instructor-large) for retrieval of closest USMLE question exemplars. The code (specifically the INIT (GPT-4) question generation step) currently runs on this, given the embeddings of the questions in USMLE question bank have been pre-generated.
 ## Components
 
 ### 1. **Topic Generation**
